@@ -63,8 +63,8 @@ Telemetry generates the exact, mathematically verifiable assets required to answ
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/24f3004981/IOMETE-project.git
-cd IOMETE-project
+git clone https://github.com/24f3004981/Telemetry.git
+cd Telemetry
 
 # Install dependencies
 npm install
