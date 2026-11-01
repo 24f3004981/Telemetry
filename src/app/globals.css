@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Munshi Signature Warm Alabaster Palette */
+    --color-bg: #fbf8f3;
+    --color-surface: #ffffff;
+    --color-sunk: #f3eee6;
+    --color-line: #e8e1d6;
+    --color-line-2: #d6ccbd;
+
+    --color-ink: #1b2430;
+    --color-ink-2: #4f5b69;
+    --color-ink-3: #7d8895;
+
+    /* Primary Accent: Deep Refined Teal */
+    --color-teal: #0d7377;
+    --color-teal-2: #0a5e61;
+    --color-teal-soft: #e3f2f2;
+
+    /* Secondary Accent: Warm Saffron */
+    --color-saffron: #e8833a;
+    --color-saffron-soft: #fcebdd;
+    --color-saffron-ink: #9a4a12;
+
+    /* Semantics */
+    --color-pass: #26734a;
+    --color-pass-soft: #e4f2ea;
+    --color-fail: #b8382b;
+    --color-fail-soft: #fbeae7;
+    --color-wait: #9a6a12;
+    --color-wait-soft: #fbf1de;
+
+    /* Legacy compatibility mappings */
+    --background: var(--color-bg);
+    --surface: var(--color-surface);
+    --surface-muted: var(--color-sunk);
+    --border: var(--color-line);
+    --border-strong: var(--color-line-2);
+    --text-primary: var(--color-ink);
+    --text-secondary: var(--color-ink-2);
+    --text-muted: var(--color-ink-3);
+    --accent: var(--color-teal);
+    --accent-hover: var(--color-teal-2);
+    --accent-soft: var(--color-teal-soft);
+
+    --font-sans: 'Instrument Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Calistoga', 'IBM Plex Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-numeric {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Munshi Button Primitives */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.5rem 1.125rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--color-line);
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.btn:hover {
+  background-color: var(--color-sunk);
+  color: var(--color-ink);
+  border-color: var(--color-line-2);
+}
+
+.btn-primary {
+  background-color: var(--color-teal);
+  color: #ffffff;
+  border-color: var(--color-teal);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-teal-2);
+  color: #ffffff;
+  border-color: var(--color-teal-2);
+}
+
+.btn-dark {
+  background-color: var(--color-ink);
+  color: #ffffff;
+  border-color: var(--color-ink);
+}
+
+.btn-dark:hover {
+  background-color: #0d131a;
+  color: #ffffff;
+  border-color: #0d131a;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Subtle elevation shadow */
+.shadow-munshi {
+  box-shadow: 0 30px 60px -30px rgba(27, 36, 48, 0.25), 0 10px 25px -10px rgba(27, 36, 48, 0.1);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 12px -2px rgba(27, 36, 48, 0.05);
+}
+
+/* Custom refined scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6ccbd;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b5a995;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .memo-container {
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

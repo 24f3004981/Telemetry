@@ -1,0 +1,948 @@
+{
+  "dealRooms": [
+    {
+      "id": "deal-apex-logistics-mvxbnajr",
+      "workspaceId": "ws-demo",
+      "title": "Apex Logistics Decision Room",
+      "status": "active",
+      "currentStage": "case",
+      "createdBy": "user-demo",
+      "createdAt": "2026-11-01T04:20:08.871Z",
+      "updatedAt": "2026-11-01T04:20:08.871Z",
+      "profile": {
+        "companyName": "Apex Logistics",
+        "industry": "Transportation & Supply Chain",
+        "region": "North America (US-East)",
+        "dataResidencyRequirement": "SOC2 and In-VPC Data Sovereignty",
+        "dataVolumeTb": 350,
+        "currentPlatform": "Snowflake Enterprise",
+        "currentAnnualSpendUsd": 720000,
+        "preferredDeployment": "Customer Cloud Account (AWS EKS)",
+        "primaryWorkloads": [
+          "Real-time Fleet Telemetry",
+          "Route Optimization SQL"
+        ],
+        "complianceNeeds": [
+          "SOC 2 Type II",
+          "Immutable Audit Trails"
+        ],
+        "dataUserCount": 120,
+        "computeIntensity": "high",
+        "growthRatePercent": 18
+      },
+      "assumptions": {
+        "iometeEnterprisePricePerVcpuPerYear": 500,
+        "iometeEnterpriseAnnualMinimumUsd": 100000,
+        "businessCriticalAnnualMinimumUsd": 250000,
+        "vcpuPerTbLow": 0.35,
+        "vcpuPerTbMedium": 0.7,
+        "vcpuPerTbHigh": 1.2,
+        "infrastructureCostRetentionPercent": 65,
+        "currentPlatformGrowthRatePercent": 12,
+        "evaluationPeriodMonths": 3
+      },
+      "activeCase": {
+        "version": 1,
+        "recommendedDeployment": "Customer Cloud Account (AWS/Azure/GCP Kubernetes)",
+        "recommendedPlan": "Enterprise",
+        "sovereigntyScore": 90,
+        "sovereigntyRationale": "Customer maintains 100% control over physical/virtual storage buckets. Fine-grained RBAC and automated query audit logging supported. High-volume data remains in-situ without vendor egress or replication penalties.",
+        "deploymentRationale": [
+          "Customer retains data in own cloud VPC (AWS S3, Azure ADLS, or Google Cloud Storage).",
+          "IOMETE control plane manages compute engines within customer Kubernetes cluster.",
+          "Eliminates vendor lock-in and avoids expensive vendor-managed storage markup."
+        ],
+        "estimatedVcpuCount": 420,
+        "yearOneIometeLicense": 210000,
+        "yearOneInfraCost": 136500,
+        "yearOneCost": 346500,
+        "yearTwoCost": 408870,
+        "yearThreeCost": 482467,
+        "threeYearTotalCost": 1237837,
+        "estimatedCurrentThreeYearCost": 2429568,
+        "projectedThreeYearSavings": 1191731,
+        "projectedAnnualSavings": 397244,
+        "paybackMonths": 1,
+        "confidenceLevel": "High",
+        "assumptionsUsed": [
+          {
+            "id": "vcpu-sizing",
+            "label": "Estimated vCPU Footprint",
+            "value": 420,
+            "unit": "vCPU",
+            "sourceType": "Calculated",
+            "sourceNote": "Calculated from 350 TB × 1.2 vCPU/TB ratio (high intensity)"
+          },
+          {
+            "id": "license-price",
+            "label": "IOMETE Enterprise Annual Price per vCPU",
+            "value": 500,
+            "unit": "$ / vCPU / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published IOMETE Enterprise list pricing"
+          },
+          {
+            "id": "platform-min",
+            "label": "IOMETE Minimum Annual Commitment",
+            "value": 100000,
+            "unit": "USD / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published Enterprise tier baseline minimum"
+          },
+          {
+            "id": "infra-retention",
+            "label": "Customer Cloud Compute Retention Factor",
+            "value": 65,
+            "unit": "%",
+            "sourceType": "Assumption",
+            "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+          },
+          {
+            "id": "workload-growth",
+            "label": "Projected Annual Workload Growth",
+            "value": 18,
+            "unit": "% / year",
+            "sourceType": "User input",
+            "sourceNote": "User specified annual enterprise data expansion rate"
+          },
+          {
+            "id": "current-spend",
+            "label": "Current Baseline Warehouse Spend",
+            "value": 720000,
+            "unit": "USD / year",
+            "sourceType": "User input",
+            "sourceNote": "Reported current platform run rate on Snowflake Enterprise"
+          }
+        ],
+        "risksAndUnknowns": [
+          "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+          "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+          "Data sovereignty configuration must be signed off by CISO team during evaluation."
+        ]
+      },
+      "caseHistory": [
+        {
+          "version": 1,
+          "recommendedDeployment": "Customer Cloud Account (AWS/Azure/GCP Kubernetes)",
+          "recommendedPlan": "Enterprise",
+          "sovereigntyScore": 90,
+          "sovereigntyRationale": "Customer maintains 100% control over physical/virtual storage buckets. Fine-grained RBAC and automated query audit logging supported. High-volume data remains in-situ without vendor egress or replication penalties.",
+          "deploymentRationale": [
+            "Customer retains data in own cloud VPC (AWS S3, Azure ADLS, or Google Cloud Storage).",
+            "IOMETE control plane manages compute engines within customer Kubernetes cluster.",
+            "Eliminates vendor lock-in and avoids expensive vendor-managed storage markup."
+          ],
+          "estimatedVcpuCount": 420,
+          "yearOneIometeLicense": 210000,
+          "yearOneInfraCost": 136500,
+          "yearOneCost": 346500,
+          "yearTwoCost": 408870,
+          "yearThreeCost": 482467,
+          "threeYearTotalCost": 1237837,
+          "estimatedCurrentThreeYearCost": 2429568,
+          "projectedThreeYearSavings": 1191731,
+          "projectedAnnualSavings": 397244,
+          "paybackMonths": 1,
+          "confidenceLevel": "High",
+          "assumptionsUsed": [
+            {
+              "id": "vcpu-sizing",
+              "label": "Estimated vCPU Footprint",
+              "value": 420,
+              "unit": "vCPU",
+              "sourceType": "Calculated",
+              "sourceNote": "Calculated from 350 TB × 1.2 vCPU/TB ratio (high intensity)"
+            },
+            {
+              "id": "license-price",
+              "label": "IOMETE Enterprise Annual Price per vCPU",
+              "value": 500,
+              "unit": "$ / vCPU / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published IOMETE Enterprise list pricing"
+            },
+            {
+              "id": "platform-min",
+              "label": "IOMETE Minimum Annual Commitment",
+              "value": 100000,
+              "unit": "USD / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published Enterprise tier baseline minimum"
+            },
+            {
+              "id": "infra-retention",
+              "label": "Customer Cloud Compute Retention Factor",
+              "value": 65,
+              "unit": "%",
+              "sourceType": "Assumption",
+              "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+            },
+            {
+              "id": "workload-growth",
+              "label": "Projected Annual Workload Growth",
+              "value": 18,
+              "unit": "% / year",
+              "sourceType": "User input",
+              "sourceNote": "User specified annual enterprise data expansion rate"
+            },
+            {
+              "id": "current-spend",
+              "label": "Current Baseline Warehouse Spend",
+              "value": 720000,
+              "unit": "USD / year",
+              "sourceType": "User input",
+              "sourceNote": "Reported current platform run rate on Snowflake Enterprise"
+            }
+          ],
+          "risksAndUnknowns": [
+            "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+            "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+            "Data sovereignty configuration must be signed off by CISO team during evaluation."
+          ]
+        }
+      ],
+      "memo": {
+        "id": "memo-deal-apex-logistics-mvxbnajr",
+        "generatedCaseId": "case-deal-apex-logistics-mvxbnajr-v1",
+        "version": 1,
+        "title": "Executive Approval Memo: IOMETE Deployment Evaluation for Apex Logistics",
+        "executiveSummary": "Apex Logistics is assessing its data-platform architecture across 350 TB of critical workloads in the North America (US-East) jurisdiction. Telemetry recommends transitioning to a Customer Cloud Account (AWS/Azure/GCP Kubernetes) with IOMETE Enterprise, eliminating multi-tenant cloud storage markups and asserting full data sovereignty within customer infrastructure.",
+        "recommendation": "Approve a 90-day technical evaluation of IOMETE Enterprise to benchmark high-priority queries and validate the estimated $1,237,837 three-year total cost of ownership.",
+        "financialSummary": "Year 1 projected expenditure is $346,500 ($210,000 platform license + $136,500 underlying compute). Three-year projected cumulative cost is $1,237,837, projecting cumulative savings of $1,191,731 against current run-rate with an estimated payback within 1 months.",
+        "sovereigntyPosition": "Sovereignty Score: 90/100. Customer maintains 100% control over physical/virtual storage buckets. Fine-grained RBAC and automated query audit logging supported. High-volume data remains in-situ without vendor egress or replication penalties.",
+        "risksAndUnknowns": [
+          "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+          "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+          "Data sovereignty configuration must be signed off by CISO team during evaluation."
+        ],
+        "nextSteps": [
+          "Deploy IOMETE Helm chart in Apex Logistics's test Kubernetes environment.",
+          "Execute 30-day benchmarking run across primary workloads: Real-time Fleet Telemetry, Route Optimization SQL.",
+          "Finalize shared security responsibility matrix with the CISO team."
+        ],
+        "createdAt": "2026-11-01T04:20:08.871Z"
+      },
+      "briefingScript": {
+        "id": "script-deal-apex-logistics-mvxbnajr",
+        "generatedCaseId": "case-deal-apex-logistics-mvxbnajr-v1",
+        "scriptText": "For Apex Logistics, Telemetry recommends a Customer Cloud Account (AWS/Azure/GCP Kubernetes) of IOMETE. The platform runs inside customer-controlled infrastructure across 350 terabytes of analytics workloads. The business case estimates a three-year total cost of $1,237,837, projecting cumulative savings of $1,191,731 with payback in 1 months. Primary decision drivers are complete data sovereignty, granular auditability, and predictable platform licensing. The recommended next step is a ninety-day evaluation with IOMETE to validate query sizing.",
+        "estimatedDurationSeconds": 55,
+        "createdAt": "2026-11-01T04:20:08.871Z"
+      }
+    },
+    {
+      "id": "deal-nordbank-01",
+      "workspaceId": "ws-demo",
+      "title": "NordBank AG — Lakehouse Modernization",
+      "status": "active",
+      "currentStage": "case",
+      "createdBy": "user-demo",
+      "createdAt": "2026-10-24T10:00:00Z",
+      "updatedAt": "2026-10-31T14:30:00Z",
+      "profile": {
+        "companyName": "NordBank AG",
+        "industry": "Financial Services",
+        "region": "European Union (Frankfurt / Dublin)",
+        "dataResidencyRequirement": "Strict EU GDPR & BaFin Banking Compliance",
+        "dataVolumeTb": 400,
+        "currentPlatform": "Legacy Cloud Data Warehouse (Snowflake)",
+        "currentAnnualSpendUsd": 850000,
+        "preferredDeployment": "Customer Cloud Account (EU AWS EKS)",
+        "primaryWorkloads": [
+          "Credit Risk Analytics",
+          "Regulatory Liquidity Reporting",
+          "Customer Anti-Fraud Scoring"
+        ],
+        "complianceNeeds": [
+          "GDPR",
+          "BaFin Audit Trails",
+          "Fine-Grained RBAC",
+          "Dynamic Data Masking"
+        ],
+        "dataUserCount": 180,
+        "computeIntensity": "medium",
+        "growthRatePercent": 15
+      },
+      "assumptions": {
+        "iometeEnterprisePricePerVcpuPerYear": 500,
+        "iometeEnterpriseAnnualMinimumUsd": 100000,
+        "businessCriticalAnnualMinimumUsd": 250000,
+        "vcpuPerTbLow": 0.35,
+        "vcpuPerTbMedium": 0.7,
+        "vcpuPerTbHigh": 1.2,
+        "infrastructureCostRetentionPercent": 65,
+        "currentPlatformGrowthRatePercent": 12,
+        "evaluationPeriodMonths": 3
+      },
+      "activeCase": {
+        "version": 1,
+        "recommendedDeployment": "Customer Cloud Account (AWS/Azure/GCP Kubernetes)",
+        "recommendedPlan": "Enterprise",
+        "sovereigntyScore": 98,
+        "sovereigntyRationale": "Customer maintains 100% control over physical/virtual storage buckets. Complies with regional auditability and regulatory data retention rules. Fine-grained RBAC and automated query audit logging supported. High-volume data remains in-situ without vendor egress or replication penalties.",
+        "deploymentRationale": [
+          "Customer retains data in own cloud VPC (AWS S3, Azure ADLS, or Google Cloud Storage).",
+          "IOMETE control plane manages compute engines within customer Kubernetes cluster.",
+          "Eliminates vendor lock-in and avoids expensive vendor-managed storage markup."
+        ],
+        "estimatedVcpuCount": 280,
+        "yearOneIometeLicense": 140000,
+        "yearOneInfraCost": 91000,
+        "yearOneCost": 231000,
+        "yearTwoCost": 265650,
+        "yearThreeCost": 305498,
+        "threeYearTotalCost": 802148,
+        "estimatedCurrentThreeYearCost": 2868240,
+        "projectedThreeYearSavings": 2066092,
+        "projectedAnnualSavings": 688697,
+        "paybackMonths": 1,
+        "confidenceLevel": "High",
+        "assumptionsUsed": [
+          {
+            "id": "vcpu-sizing",
+            "label": "Estimated vCPU Footprint",
+            "value": 280,
+            "unit": "vCPU",
+            "sourceType": "Calculated",
+            "sourceNote": "Calculated from 400 TB × 0.7 vCPU/TB ratio (medium intensity)"
+          },
+          {
+            "id": "license-price",
+            "label": "IOMETE Enterprise Annual Price per vCPU",
+            "value": 500,
+            "unit": "$ / vCPU / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published IOMETE Enterprise list pricing"
+          },
+          {
+            "id": "platform-min",
+            "label": "IOMETE Minimum Annual Commitment",
+            "value": 100000,
+            "unit": "USD / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published Enterprise tier baseline minimum"
+          },
+          {
+            "id": "infra-retention",
+            "label": "Customer Cloud Compute Retention Factor",
+            "value": 65,
+            "unit": "%",
+            "sourceType": "Assumption",
+            "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+          },
+          {
+            "id": "workload-growth",
+            "label": "Projected Annual Workload Growth",
+            "value": 15,
+            "unit": "% / year",
+            "sourceType": "User input",
+            "sourceNote": "User specified annual enterprise data expansion rate"
+          },
+          {
+            "id": "current-spend",
+            "label": "Current Baseline Warehouse Spend",
+            "value": 850000,
+            "unit": "USD / year",
+            "sourceType": "User input",
+            "sourceNote": "Reported current platform run rate on Legacy Cloud Data Warehouse (Snowflake)"
+          }
+        ],
+        "risksAndUnknowns": [
+          "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+          "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+          "Data sovereignty configuration must be signed off by CISO team during evaluation."
+        ]
+      },
+      "caseHistory": [
+        {
+          "version": 1,
+          "recommendedDeployment": "Customer Cloud Account (AWS/Azure/GCP Kubernetes)",
+          "recommendedPlan": "Enterprise",
+          "sovereigntyScore": 98,
+          "sovereigntyRationale": "Customer maintains 100% control over physical/virtual storage buckets. Complies with regional auditability and regulatory data retention rules. Fine-grained RBAC and automated query audit logging supported. High-volume data remains in-situ without vendor egress or replication penalties.",
+          "deploymentRationale": [
+            "Customer retains data in own cloud VPC (AWS S3, Azure ADLS, or Google Cloud Storage).",
+            "IOMETE control plane manages compute engines within customer Kubernetes cluster.",
+            "Eliminates vendor lock-in and avoids expensive vendor-managed storage markup."
+          ],
+          "estimatedVcpuCount": 280,
+          "yearOneIometeLicense": 140000,
+          "yearOneInfraCost": 91000,
+          "yearOneCost": 231000,
+          "yearTwoCost": 265650,
+          "yearThreeCost": 305498,
+          "threeYearTotalCost": 802148,
+          "estimatedCurrentThreeYearCost": 2868240,
+          "projectedThreeYearSavings": 2066092,
+          "projectedAnnualSavings": 688697,
+          "paybackMonths": 1,
+          "confidenceLevel": "High",
+          "assumptionsUsed": [
+            {
+              "id": "vcpu-sizing",
+              "label": "Estimated vCPU Footprint",
+              "value": 280,
+              "unit": "vCPU",
+              "sourceType": "Calculated",
+              "sourceNote": "Calculated from 400 TB × 0.7 vCPU/TB ratio (medium intensity)"
+            },
+            {
+              "id": "license-price",
+              "label": "IOMETE Enterprise Annual Price per vCPU",
+              "value": 500,
+              "unit": "$ / vCPU / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published IOMETE Enterprise list pricing"
+            },
+            {
+              "id": "platform-min",
+              "label": "IOMETE Minimum Annual Commitment",
+              "value": 100000,
+              "unit": "USD / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published Enterprise tier baseline minimum"
+            },
+            {
+              "id": "infra-retention",
+              "label": "Customer Cloud Compute Retention Factor",
+              "value": 65,
+              "unit": "%",
+              "sourceType": "Assumption",
+              "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+            },
+            {
+              "id": "workload-growth",
+              "label": "Projected Annual Workload Growth",
+              "value": 15,
+              "unit": "% / year",
+              "sourceType": "User input",
+              "sourceNote": "User specified annual enterprise data expansion rate"
+            },
+            {
+              "id": "current-spend",
+              "label": "Current Baseline Warehouse Spend",
+              "value": 850000,
+              "unit": "USD / year",
+              "sourceType": "User input",
+              "sourceNote": "Reported current platform run rate on Legacy Cloud Data Warehouse (Snowflake)"
+            }
+          ],
+          "risksAndUnknowns": [
+            "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+            "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+            "Data sovereignty configuration must be signed off by CISO team during evaluation."
+          ]
+        }
+      ],
+      "memo": {
+        "id": "memo-nordbank-01",
+        "generatedCaseId": "case-nordbank-01",
+        "version": 1,
+        "title": "Executive Decision Memo: IOMETE Deployment Evaluation for NordBank AG",
+        "executiveSummary": "NordBank AG requires a scalable modern data platform supporting 400 TB of critical risk analytics while strictly adhering to EU data-residency and BaFin regulatory oversight. Telemetry recommends transitioning from the existing multi-tenant cloud warehouse to an EU Private-Cloud deployment of IOMETE running directly within NordBank's own AWS Kubernetes perimeter.",
+        "recommendation": "Approve a 90-day evaluation of IOMETE Enterprise deployed inside NordBank's AWS Frankfurt VPC, targeting a 3-year projected savings of ~$870,000+ while achieving 100% data sovereignty.",
+        "financialSummary": "Year 1 estimated platform licensing and infrastructure compute is projected at $231,000 against a current run-rate of $850,000. Over 3 years, projected cumulative expenditure is $764,000 versus an estimated $2,872,000 on the legacy platform, yielding an estimated payback period of under 4 months.",
+        "sovereigntyPosition": "Telemetry assigns a Sovereignty Score of 96/100. Zero analytics data leaves the bank's VPC. All object storage buckets remain customer-encrypted with bank-held KMS keys, fully satisfying BaFin and GDPR mandates.",
+        "risksAndUnknowns": [
+          "Peak concurrency during end-of-month regulatory stress testing must be validated during the evaluation.",
+          "AWS Enterprise Discount Program (EDP) credit drawdown rules should be confirmed with procurement."
+        ],
+        "nextSteps": [
+          "Deploy IOMETE Helm chart in NordBank Frankfurt test VPC.",
+          "Run 30-day query benchmarking on top 10 heaviest credit risk pipelines.",
+          "Execute formal CISO security and RBAC audit checklist."
+        ],
+        "createdAt": "2026-10-31T14:30:00Z"
+      },
+      "briefingScript": {
+        "id": "script-nordbank-01",
+        "generatedCaseId": "case-nordbank-01",
+        "scriptText": "For NordBank, Telemetry recommends an EU private-cloud deployment of IOMETE. The platform would run inside the bank’s own Kubernetes environment, with all four hundred terabytes of analytics data retained in customer-controlled object storage. The financial model assumes predictable platform licensing, reuse of existing cloud commitments, and zero per-user expansion costs. The primary decision factors are strict data sovereignty, auditability, and multi-year cost predictability. Over three years, this model projects net savings exceeding eight hundred thousand dollars with a payback under four months. The recommended next step is a ninety-day evaluation with IOMETE to validate workload sizing and infrastructure assumptions.",
+        "estimatedDurationSeconds": 58,
+        "audioUrl": "/audio/nordbank-briefing.mp3",
+        "createdAt": "2026-10-31T14:30:00Z"
+      }
+    },
+    {
+      "id": "deal-helix-02",
+      "workspaceId": "ws-demo",
+      "title": "Helix Manufacturing — Hadoop Modernization",
+      "status": "active",
+      "currentStage": "case",
+      "createdBy": "user-demo",
+      "createdAt": "2026-10-18T09:00:00Z",
+      "updatedAt": "2026-10-30T16:15:00Z",
+      "profile": {
+        "companyName": "Helix Manufacturing Corp",
+        "industry": "Industrial & Automotive",
+        "region": "North America (Midwest USA)",
+        "dataResidencyRequirement": "Moderate Internal IP & Factory Data Protection",
+        "dataVolumeTb": 120,
+        "currentPlatform": "On-Premises Hadoop Cluster (Legacy EOL)",
+        "currentAnnualSpendUsd": 420000,
+        "preferredDeployment": "Hybrid Kubernetes Deployment",
+        "primaryWorkloads": [
+          "IoT Telemetry Ingestion",
+          "Predictive Quality Monitoring",
+          "Supply Chain Forecasting"
+        ],
+        "complianceNeeds": [
+          "Internal Operational Audits",
+          "ISO 27001"
+        ],
+        "dataUserCount": 65,
+        "computeIntensity": "medium",
+        "growthRatePercent": 12
+      },
+      "assumptions": {
+        "iometeEnterprisePricePerVcpuPerYear": 500,
+        "iometeEnterpriseAnnualMinimumUsd": 100000,
+        "businessCriticalAnnualMinimumUsd": 250000,
+        "vcpuPerTbLow": 0.35,
+        "vcpuPerTbMedium": 0.7,
+        "vcpuPerTbHigh": 1.2,
+        "infrastructureCostRetentionPercent": 65,
+        "currentPlatformGrowthRatePercent": 12,
+        "evaluationPeriodMonths": 3
+      },
+      "activeCase": {
+        "version": 1,
+        "recommendedDeployment": "Hybrid Edge-to-Cloud Kubernetes",
+        "recommendedPlan": "Enterprise",
+        "sovereigntyScore": 75,
+        "sovereigntyRationale": "Complies with regional auditability and regulatory data retention rules. Fine-grained RBAC and automated query audit logging supported.",
+        "deploymentRationale": [
+          "Combines localized edge ingestion (factories/facilities) with central analytics warehouse.",
+          "Single unified governance pane across on-prem and cloud nodes."
+        ],
+        "estimatedVcpuCount": 84,
+        "yearOneIometeLicense": 100000,
+        "yearOneInfraCost": 27300,
+        "yearOneCost": 127300,
+        "yearTwoCost": 142576,
+        "yearThreeCost": 159685,
+        "threeYearTotalCost": 429561,
+        "estimatedCurrentThreeYearCost": 1417248,
+        "projectedThreeYearSavings": 987687,
+        "projectedAnnualSavings": 329229,
+        "paybackMonths": 1,
+        "confidenceLevel": "High",
+        "assumptionsUsed": [
+          {
+            "id": "vcpu-sizing",
+            "label": "Estimated vCPU Footprint",
+            "value": 84,
+            "unit": "vCPU",
+            "sourceType": "Calculated",
+            "sourceNote": "Calculated from 120 TB × 0.7 vCPU/TB ratio (medium intensity)"
+          },
+          {
+            "id": "license-price",
+            "label": "IOMETE Enterprise Annual Price per vCPU",
+            "value": 500,
+            "unit": "$ / vCPU / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published IOMETE Enterprise list pricing"
+          },
+          {
+            "id": "platform-min",
+            "label": "IOMETE Minimum Annual Commitment",
+            "value": 100000,
+            "unit": "USD / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published Enterprise tier baseline minimum"
+          },
+          {
+            "id": "infra-retention",
+            "label": "Customer Cloud Compute Retention Factor",
+            "value": 65,
+            "unit": "%",
+            "sourceType": "Assumption",
+            "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+          },
+          {
+            "id": "workload-growth",
+            "label": "Projected Annual Workload Growth",
+            "value": 12,
+            "unit": "% / year",
+            "sourceType": "User input",
+            "sourceNote": "User specified annual enterprise data expansion rate"
+          },
+          {
+            "id": "current-spend",
+            "label": "Current Baseline Warehouse Spend",
+            "value": 420000,
+            "unit": "USD / year",
+            "sourceType": "User input",
+            "sourceNote": "Reported current platform run rate on On-Premises Hadoop Cluster (Legacy EOL)"
+          }
+        ],
+        "risksAndUnknowns": [
+          "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+          "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+          "Data sovereignty configuration must be signed off by CISO team during evaluation."
+        ]
+      },
+      "caseHistory": [
+        {
+          "version": 1,
+          "recommendedDeployment": "Hybrid Edge-to-Cloud Kubernetes",
+          "recommendedPlan": "Enterprise",
+          "sovereigntyScore": 75,
+          "sovereigntyRationale": "Complies with regional auditability and regulatory data retention rules. Fine-grained RBAC and automated query audit logging supported.",
+          "deploymentRationale": [
+            "Combines localized edge ingestion (factories/facilities) with central analytics warehouse.",
+            "Single unified governance pane across on-prem and cloud nodes."
+          ],
+          "estimatedVcpuCount": 84,
+          "yearOneIometeLicense": 100000,
+          "yearOneInfraCost": 27300,
+          "yearOneCost": 127300,
+          "yearTwoCost": 142576,
+          "yearThreeCost": 159685,
+          "threeYearTotalCost": 429561,
+          "estimatedCurrentThreeYearCost": 1417248,
+          "projectedThreeYearSavings": 987687,
+          "projectedAnnualSavings": 329229,
+          "paybackMonths": 1,
+          "confidenceLevel": "High",
+          "assumptionsUsed": [
+            {
+              "id": "vcpu-sizing",
+              "label": "Estimated vCPU Footprint",
+              "value": 84,
+              "unit": "vCPU",
+              "sourceType": "Calculated",
+              "sourceNote": "Calculated from 120 TB × 0.7 vCPU/TB ratio (medium intensity)"
+            },
+            {
+              "id": "license-price",
+              "label": "IOMETE Enterprise Annual Price per vCPU",
+              "value": 500,
+              "unit": "$ / vCPU / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published IOMETE Enterprise list pricing"
+            },
+            {
+              "id": "platform-min",
+              "label": "IOMETE Minimum Annual Commitment",
+              "value": 100000,
+              "unit": "USD / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published Enterprise tier baseline minimum"
+            },
+            {
+              "id": "infra-retention",
+              "label": "Customer Cloud Compute Retention Factor",
+              "value": 65,
+              "unit": "%",
+              "sourceType": "Assumption",
+              "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+            },
+            {
+              "id": "workload-growth",
+              "label": "Projected Annual Workload Growth",
+              "value": 12,
+              "unit": "% / year",
+              "sourceType": "User input",
+              "sourceNote": "User specified annual enterprise data expansion rate"
+            },
+            {
+              "id": "current-spend",
+              "label": "Current Baseline Warehouse Spend",
+              "value": 420000,
+              "unit": "USD / year",
+              "sourceType": "User input",
+              "sourceNote": "Reported current platform run rate on On-Premises Hadoop Cluster (Legacy EOL)"
+            }
+          ],
+          "risksAndUnknowns": [
+            "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+            "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+            "Data sovereignty configuration must be signed off by CISO team during evaluation."
+          ]
+        }
+      ],
+      "memo": {
+        "id": "memo-helix-02",
+        "generatedCaseId": "case-helix-02",
+        "version": 1,
+        "title": "Executive Decision Memo: IOMETE Hybrid Lakehouse for Helix Manufacturing",
+        "executiveSummary": "Helix Manufacturing faces soaring operational overhead on its aging 120 TB on-premises Hadoop cluster. Telemetry recommends migrating to IOMETE's hybrid Kubernetes deployment, allowing low-latency factory edge ingestion while synchronizing with central analytics.",
+        "recommendation": "Replace the legacy Hadoop licensing with IOMETE Enterprise, retiring costly specialized hardware in favor of standard commodity compute.",
+        "financialSummary": "Estimated Year 1 IOMETE investment is $155,000 versus current Hadoop maintenance of $420,000. Projected 3-year savings total ~$710,000 with immediate positive cash flow.",
+        "sovereigntyPosition": "Sovereignty Score: 85/100. Proprietary assembly telemetry remains strictly on factory premises, syncing aggregated summaries to the central lakehouse.",
+        "risksAndUnknowns": [
+          "Legacy MapReduce job conversion timeline to Spark SQL requires sizing."
+        ],
+        "nextSteps": [
+          "Benchmark 3 core factory telemetry feeds on IOMETE Spark engine.",
+          "Confirm Kubernetes edge node sizing."
+        ],
+        "createdAt": "2026-10-30T16:15:00Z"
+      },
+      "briefingScript": {
+        "id": "script-helix-02",
+        "generatedCaseId": "case-helix-02",
+        "scriptText": "For Helix Manufacturing, Telemetry recommends a hybrid deployment of IOMETE to modernize their aging Hadoop cluster. The platform separates compute from storage, ingesting factory edge telemetry without high ongoing maintenance. The financial model projects over seven hundred thousand dollars in savings over three years, with predictable vCPU licensing and zero per-seat costs. The recommended next step is a proof of concept on three core sensor feeds.",
+        "estimatedDurationSeconds": 46,
+        "audioUrl": "/audio/helix-briefing.mp3",
+        "createdAt": "2026-10-30T16:15:00Z"
+      }
+    },
+    {
+      "id": "deal-meridian-03",
+      "workspaceId": "ws-demo",
+      "title": "Meridian Health — Multi-Cloud Warehouse Consolidation",
+      "status": "active",
+      "currentStage": "case",
+      "createdBy": "user-demo",
+      "createdAt": "2026-10-15T11:00:00Z",
+      "updatedAt": "2026-10-29T18:00:00Z",
+      "profile": {
+        "companyName": "Meridian Health Network",
+        "industry": "Healthcare & Life Sciences",
+        "region": "United States (East Coast)",
+        "dataResidencyRequirement": "Strict HIPAA & HITECH Patient Data Protection",
+        "dataVolumeTb": 260,
+        "currentPlatform": "Multi-Cloud Warehouse (BigQuery & Snowflake)",
+        "currentAnnualSpendUsd": 1100000,
+        "preferredDeployment": "Customer Cloud Account (AWS HIPAA EKS)",
+        "primaryWorkloads": [
+          "Patient Clinical Cohort Analytics",
+          "Billing & Claims Optimization",
+          "Genomic Research Pipelines"
+        ],
+        "complianceNeeds": [
+          "HIPAA BAA",
+          "PHI Data Masking",
+          "Zero Cloud Egress Outside Health Boundary",
+          "Comprehensive Access Auditing"
+        ],
+        "dataUserCount": 310,
+        "computeIntensity": "high",
+        "growthRatePercent": 20
+      },
+      "assumptions": {
+        "iometeEnterprisePricePerVcpuPerYear": 500,
+        "iometeEnterpriseAnnualMinimumUsd": 100000,
+        "businessCriticalAnnualMinimumUsd": 250000,
+        "vcpuPerTbLow": 0.35,
+        "vcpuPerTbMedium": 0.7,
+        "vcpuPerTbHigh": 1.2,
+        "infrastructureCostRetentionPercent": 65,
+        "currentPlatformGrowthRatePercent": 12,
+        "evaluationPeriodMonths": 3
+      },
+      "activeCase": {
+        "version": 1,
+        "recommendedDeployment": "Customer Cloud Account (AWS/Azure/GCP Kubernetes)",
+        "recommendedPlan": "Enterprise",
+        "sovereigntyScore": 98,
+        "sovereigntyRationale": "Customer maintains 100% control over physical/virtual storage buckets. Complies with regional auditability and regulatory data retention rules. Fine-grained RBAC and automated query audit logging supported. High-volume data remains in-situ without vendor egress or replication penalties.",
+        "deploymentRationale": [
+          "Customer retains data in own cloud VPC (AWS S3, Azure ADLS, or Google Cloud Storage).",
+          "IOMETE control plane manages compute engines within customer Kubernetes cluster.",
+          "Eliminates vendor lock-in and avoids expensive vendor-managed storage markup."
+        ],
+        "estimatedVcpuCount": 312,
+        "yearOneIometeLicense": 156000,
+        "yearOneInfraCost": 101400,
+        "yearOneCost": 257400,
+        "yearTwoCost": 308880,
+        "yearThreeCost": 370656,
+        "threeYearTotalCost": 936936,
+        "estimatedCurrentThreeYearCost": 3711840,
+        "projectedThreeYearSavings": 2774904,
+        "projectedAnnualSavings": 924968,
+        "paybackMonths": 1,
+        "confidenceLevel": "High",
+        "assumptionsUsed": [
+          {
+            "id": "vcpu-sizing",
+            "label": "Estimated vCPU Footprint",
+            "value": 312,
+            "unit": "vCPU",
+            "sourceType": "Calculated",
+            "sourceNote": "Calculated from 260 TB × 1.2 vCPU/TB ratio (high intensity)"
+          },
+          {
+            "id": "license-price",
+            "label": "IOMETE Enterprise Annual Price per vCPU",
+            "value": 500,
+            "unit": "$ / vCPU / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published IOMETE Enterprise list pricing"
+          },
+          {
+            "id": "platform-min",
+            "label": "IOMETE Minimum Annual Commitment",
+            "value": 100000,
+            "unit": "USD / year",
+            "sourceType": "Vendor-claimed",
+            "sourceNote": "Published Enterprise tier baseline minimum"
+          },
+          {
+            "id": "infra-retention",
+            "label": "Customer Cloud Compute Retention Factor",
+            "value": 65,
+            "unit": "%",
+            "sourceType": "Assumption",
+            "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+          },
+          {
+            "id": "workload-growth",
+            "label": "Projected Annual Workload Growth",
+            "value": 20,
+            "unit": "% / year",
+            "sourceType": "User input",
+            "sourceNote": "User specified annual enterprise data expansion rate"
+          },
+          {
+            "id": "current-spend",
+            "label": "Current Baseline Warehouse Spend",
+            "value": 1100000,
+            "unit": "USD / year",
+            "sourceType": "User input",
+            "sourceNote": "Reported current platform run rate on Multi-Cloud Warehouse (BigQuery & Snowflake)"
+          }
+        ],
+        "risksAndUnknowns": [
+          "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+          "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+          "HIPAA BAA execution and formal shared responsibility matrix requires IOMETE validation."
+        ]
+      },
+      "caseHistory": [
+        {
+          "version": 1,
+          "recommendedDeployment": "Customer Cloud Account (AWS/Azure/GCP Kubernetes)",
+          "recommendedPlan": "Enterprise",
+          "sovereigntyScore": 98,
+          "sovereigntyRationale": "Customer maintains 100% control over physical/virtual storage buckets. Complies with regional auditability and regulatory data retention rules. Fine-grained RBAC and automated query audit logging supported. High-volume data remains in-situ without vendor egress or replication penalties.",
+          "deploymentRationale": [
+            "Customer retains data in own cloud VPC (AWS S3, Azure ADLS, or Google Cloud Storage).",
+            "IOMETE control plane manages compute engines within customer Kubernetes cluster.",
+            "Eliminates vendor lock-in and avoids expensive vendor-managed storage markup."
+          ],
+          "estimatedVcpuCount": 312,
+          "yearOneIometeLicense": 156000,
+          "yearOneInfraCost": 101400,
+          "yearOneCost": 257400,
+          "yearTwoCost": 308880,
+          "yearThreeCost": 370656,
+          "threeYearTotalCost": 936936,
+          "estimatedCurrentThreeYearCost": 3711840,
+          "projectedThreeYearSavings": 2774904,
+          "projectedAnnualSavings": 924968,
+          "paybackMonths": 1,
+          "confidenceLevel": "High",
+          "assumptionsUsed": [
+            {
+              "id": "vcpu-sizing",
+              "label": "Estimated vCPU Footprint",
+              "value": 312,
+              "unit": "vCPU",
+              "sourceType": "Calculated",
+              "sourceNote": "Calculated from 260 TB × 1.2 vCPU/TB ratio (high intensity)"
+            },
+            {
+              "id": "license-price",
+              "label": "IOMETE Enterprise Annual Price per vCPU",
+              "value": 500,
+              "unit": "$ / vCPU / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published IOMETE Enterprise list pricing"
+            },
+            {
+              "id": "platform-min",
+              "label": "IOMETE Minimum Annual Commitment",
+              "value": 100000,
+              "unit": "USD / year",
+              "sourceType": "Vendor-claimed",
+              "sourceNote": "Published Enterprise tier baseline minimum"
+            },
+            {
+              "id": "infra-retention",
+              "label": "Customer Cloud Compute Retention Factor",
+              "value": 65,
+              "unit": "%",
+              "sourceType": "Assumption",
+              "sourceNote": "Customer-paid underlying cloud VM compute and persistent volume cost"
+            },
+            {
+              "id": "workload-growth",
+              "label": "Projected Annual Workload Growth",
+              "value": 20,
+              "unit": "% / year",
+              "sourceType": "User input",
+              "sourceNote": "User specified annual enterprise data expansion rate"
+            },
+            {
+              "id": "current-spend",
+              "label": "Current Baseline Warehouse Spend",
+              "value": 1100000,
+              "unit": "USD / year",
+              "sourceType": "User input",
+              "sourceNote": "Reported current platform run rate on Multi-Cloud Warehouse (BigQuery & Snowflake)"
+            }
+          ],
+          "risksAndUnknowns": [
+            "Workload query concurrency profile requires benchmarking during the 90-day evaluation.",
+            "Specific cloud provider infrastructure discounts (e.g. AWS EDP / Azure EA) must be applied to compute retention numbers.",
+            "HIPAA BAA execution and formal shared responsibility matrix requires IOMETE validation."
+          ]
+        }
+      ],
+      "memo": {
+        "id": "memo-meridian-03",
+        "generatedCaseId": "case-meridian-03",
+        "version": 1,
+        "title": "Executive Decision Memo: IOMETE Private Lakehouse for Meridian Health",
+        "executiveSummary": "Meridian Health is experiencing severe cost inflation and compliance fragmentation running dual analytics warehouses across Google BigQuery and Snowflake for 260 TB of PHI. Telemetry recommends consolidating onto an IOMETE Private Lakehouse deployed in Meridian's dedicated HIPAA AWS account.",
+        "recommendation": "Execute IOMETE Enterprise deployment inside Meridian's HIPAA perimeter, eliminating cross-cloud egress fees and consolidating governance into a single Apache Iceberg catalog.",
+        "financialSummary": "Year 1 total projected cost is $382,000 versus current $1,100,000 multi-cloud spend. 3-year projected savings exceed $1.85M, driven by eliminating per-query scanning fees and per-seat taxes on 310 data users.",
+        "sovereigntyPosition": "Sovereignty Score: 94/100. All PHI remains strictly within customer-owned S3 buckets with customer-managed encryption keys. (Note: Specific HIPAA BAA terms require formal IOMETE validation).",
+        "risksAndUnknowns": [
+          "Formal Business Associate Agreement (BAA) and SOC 2 Type II review requires legal validation with IOMETE.",
+          "Concurrency spikes across 310 clinicians during peak morning clinical shifts."
+        ],
+        "nextSteps": [
+          "Execute legal NDA and vendor BAA framework.",
+          "Spin up test IOMETE cluster on Meridian AWS HIPAA account.",
+          "Benchmark sample genomic cohort queries."
+        ],
+        "createdAt": "2026-10-29T18:00:00Z"
+      },
+      "briefingScript": {
+        "id": "script-meridian-03",
+        "generatedCaseId": "case-meridian-03",
+        "scriptText": "For Meridian Health, Telemetry recommends consolidating multi-cloud analytics into a single private IOMETE lakehouse inside Meridian's HIPAA-compliant AWS perimeter. Retaining all patient data in customer-owned object storage eliminates cross-cloud egress fees and strengthens access governance. The model projects over 1.8 million dollars in three-year savings by replacing per-query scanning charges with predictable compute. The recommended next step is executing the HIPAA evaluation agreement to validate clinical workload concurrency.",
+        "estimatedDurationSeconds": 52,
+        "audioUrl": "/audio/meridian-briefing.mp3",
+        "createdAt": "2026-10-29T18:00:00Z"
+      }
+    }
+  ],
+  "auditEvents": [
+    {
+      "id": "evt-init-01",
+      "dealRoomId": "deal-nordbank-01",
+      "eventType": "DEAL_ROOM_INITIALIZED",
+      "metadata": {
+        "title": "NordBank AG initial seed loaded"
+      },
+      "createdAt": "2026-10-31T23:19:58.508Z"
+    },
+    {
+      "id": "evt-mvxbnam9",
+      "dealRoomId": "deal-apex-logistics-mvxbnajr",
+      "eventType": "DEAL_ROOM_CREATED",
+      "metadata": {
+        "companyName": "Apex Logistics",
+        "totalCost": 1237837
+      },
+      "createdAt": "2026-11-01T04:20:08.871Z"
+    }
+  ]
+}

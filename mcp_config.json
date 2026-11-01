@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "meko": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.mekodata.ai/mcp"
+      ],
+      "env": {
+        "PROJECT_ID": "telemetry-iomete-boardroom"
+      }
+    }
+  }
+}
